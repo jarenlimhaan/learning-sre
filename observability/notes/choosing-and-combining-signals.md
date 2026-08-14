@@ -6,24 +6,24 @@
 
 ### Metrics
 
-- ✅ Dashboards showing system health
-- ✅ Alerts on abnormal conditions
-- ✅ Capacity planning and trending
-- ✅ Aggregated views across instances
+- Dashboards showing system health
+- Alerts on abnormal conditions
+- Capacity planning and trending
+- Aggregated views across instances
 
 ### Logs
 
-- ✅ Detailed error messages
-- ✅ Business logic debugging
-- ✅ Audit trails
-- ✅ Raw values and rich context
+- Detailed error messages
+- Business logic debugging
+- Audit trails
+- Raw values and rich context
 
 ### Traces
 
-- ✅ Debugging slow requests
-- ✅ Service dependencies
-- ✅ Finding where errors originate
-- ✅ Optimizing critical paths
+- Debugging slow requests
+- Service dependencies
+- Finding where errors originate
+- Optimizing critical paths
 
 ## Observability Workflow
 
