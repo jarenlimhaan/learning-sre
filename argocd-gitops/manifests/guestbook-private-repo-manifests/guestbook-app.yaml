@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-app
+  namespace: argocd
+
+# The spec defines the desired state of the application, including the project it belongs to, the source repository, the target revision, and the path to the application manifests within the repository.
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jarenlimhaan/argocd-example-apps-lab.git
+    targetRevision: HEAD # always use the latest commit on the main branch
+    path: helm-guestbook
+    # helm:
+    #   valueFiles:
+    #     # - values.yaml
+    #     - values-custom.yaml
+    #   valuesObject:
+    #     replicaCount: 2
+    #     service:
+    #       type: NodePort
+    #   parameters:
+    #     - name: replicaCount
+    #       value: "1"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true

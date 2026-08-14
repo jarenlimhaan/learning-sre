@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: headlamp-dashboard
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://kubernetes-sigs.github.io/headlamp/
+    targetRevision: 0.42.0
+    chart: headlamp
+    helm:
+      values: |
+        config:
+          useInCluster: true
+        containerPort: 4466
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: k8s-dashboard
