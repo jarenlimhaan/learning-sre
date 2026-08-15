@@ -1,2 +1,3 @@
 **/.env
 argocd-gitops/kubectl-argo-rollouts.exe
+observability/app-versions/
