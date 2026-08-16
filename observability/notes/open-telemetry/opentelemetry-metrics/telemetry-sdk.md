@@ -1,5 +1,5 @@
 ## Automation vs Manual Collection of Traces in TypeScript
-![alt text](../../images/sdk.png)
+![alt text](../../../images/sdk.png)
 
 - This diagram is basically showing **two ways OpenTelemetry collects metrics from your Node.js app**:
 
