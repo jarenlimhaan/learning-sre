@@ -1,6 +1,6 @@
 ## Prometheus
 
-![prom](../images/prom.png)
+![prom](../../images/prom.png)
 
 ### TL;DR
 
