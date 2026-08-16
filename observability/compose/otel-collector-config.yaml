@@ -1,0 +1,67 @@
+# Receive traces, metrics, and logs from applications using OTLP.
+receivers:
+  otlp:
+    protocols:
+      # OTLP over gRPC.
+      grpc:
+        endpoint: 0.0.0.0:4317
+      # OTLP over HTTP (/v1/traces, /v1/metrics, and /v1/logs).
+      http:
+        endpoint: 0.0.0.0:4318
+
+# Process telemetry before exporting it.
+processors:
+  # Group telemetry to reduce the number of export requests.
+  batch:
+    timeout: 10s
+    send_batch_size: 1024
+  # Protect the Collector from excessive memory usage.
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+
+# Define where each telemetry signal is sent.
+exporters:
+  # Push traces to Tempo using OTLP/gRPC over the Docker network.
+  otlp/tempo:
+    endpoint: tempo:4317
+    tls:
+      insecure: true
+  # Expose application metrics on :8889 for Prometheus to scrape.
+  prometheus:
+    endpoint: 0.0.0.0:8889
+  # Push logs to Loki using OTLP/HTTP.
+  otlphttp/loki:
+    endpoint: http://loki:3100/otlp
+    tls:
+      insecure: true
+
+service:
+  # Expose the Collector's own internal metrics on :8888.
+  # This is separate from application metrics exposed on :8889.
+  telemetry:
+    metrics:
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: '0.0.0.0'
+                port: 8888
+
+  # Connect receivers -> processors -> exporters for each signal.
+  pipelines:
+    # Application traces: OTLP -> processing -> Tempo.
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [otlp/tempo]
+    # Application metrics: OTLP -> processing -> :8889 scrape endpoint.
+    metrics:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [prometheus]
+    # Application logs: OTLP -> processing -> Loki.
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [otlphttp/loki]
