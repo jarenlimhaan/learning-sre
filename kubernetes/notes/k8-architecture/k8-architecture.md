@@ -1,6 +1,6 @@
 # Kubernetes Architecture
 
-![Kubernetes cluster architecture](../images/arch.png)
+![Kubernetes cluster architecture](../../images/arch.png)
 
 A Kubernetes cluster has two main areas:
 
