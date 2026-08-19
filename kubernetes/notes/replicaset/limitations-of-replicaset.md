@@ -1,0 +1,7 @@
+Here is a summary of the limitations of ReplicaSets compared to Deployments:
+
+* **No Support for Rolling Updates**: Updating the container image or template in a ReplicaSet manifest does not affect existing, running Pods. You have to manually terminate the old Pods one by one for new Pods to spawn with the updated configuration.
+* **Lack of Automated Rollbacks**: ReplicaSets do not keep a history of past revisions or support native rollback commands. If a new deployment fails or causes errors, reverting to a previous state requires manual configuration changes and Pod terminations.
+* **Indiscriminate Label Matching**: ReplicaSets select and manage Pods based entirely on key-value label selectors. If a standalone Pod or another workload is launched with matching labels, the ReplicaSet will blindly adopt it or terminate excess Pods to enforce its target count.
+* **Risk of Unintended Pod Deletion**: Because selection relies solely on basic labels without strict ownership boundaries, weak or generic selection criteria can cause a ReplicaSet to inadvertently hijack and delete unrelated Pods across the cluster.
+* **Configuration Drift**: Maintaining separate YAML manifests for standalone Pods alongside a ReplicaSet creates extra management overhead and increases the risk of mismatched configurations.

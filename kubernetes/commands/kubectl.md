@@ -17,3 +17,24 @@ kubectl delete pod <<pod name>>
 kubectl expose pod <pod-name> \
   --type=NodePort \
   --port=80
+
+# Check replica sets
+kubectl get rs
+
+# Check deployments
+kubectl get deploy
+
+# Check rollout history
+kubectl rollout history deployment/<deployment-name>
+
+# Undo rolling update
+kubectl rollout undo deployment/<deployment-name>
+
+# Check diff
+kubectl diff -f <yaml-file>
+
+# Scaling deployments
+kubectl scale deploy <deployment-name> --replicas=n
+
+# Describe pod
+kubectl describe pod <pod-name>

@@ -6,5 +6,5 @@
 * ReplicaSets work by identifying pods via `selectors`, and continuously checking whether the number of running pods matches the desired number of pods specified in the configuration.
 * ReplicaSets recreate pods automatically based on the template section in their spec.
 
-![alt text](../images/replica.png)
-![alt text](../images/replica-process.png)
+![alt text](../../images/replica.png)
+![alt text](../../images/replica-process.png)
