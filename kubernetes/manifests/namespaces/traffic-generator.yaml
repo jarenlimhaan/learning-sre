@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: traffic-generator
+  labels:
+    app: traffic-generator
+spec:
+  containers:
+    - name: traffic-generator
+      image: lmacademy/traffic-generator:1.0.0
+      args:
+        # The first argument is the target URL to send requests to, and the second argument is the number of requests to send.
+
+        # Format is <service-name>.<namespace>.svc.cluster.local/<path>
+        - 'color-api-svc.dev.svc.cluster.local/api'
+        - '1'

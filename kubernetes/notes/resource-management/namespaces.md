@@ -1,0 +1,19 @@
+## Namespaces
+- Improve isolation for group of resources
+    - Namespaces provide a way to divide cluster resources between multiple users, teams,applications, or environments. It allows for resource isolation and helps organize workloads in large Kubernetes clusters.
+        - Namespaces enable logical isolation of resources within the same physical cluster.
+        - Initial namespaces: default, kube-system, kube-public, and kube-node-lease.
+    - Common use-cases:
+        - Multi-tenant clusters: Each team can take care of their applications, and keep their resources (pods,services, etc.) logically separated.
+        - Environment separation: Each environment can have its own resources, with different policies and quotas applied.
+        - Resource Quotas: We wish to limit the CPU, memory, and number of resources that a namespace can use. This prevents one team or environment from monopolizing cluster resources.
+        - security and Access Control: We wish to limit user or service account access to specific resources via RBAC mechanisms. This ensures that users or services can only access resources within their allowed
+- Using namespaces:
+    - We must inform in which namespace we wish to create our resources
+    - We can set a current namespace for all kubectl commands, or pass it explicitly in each command
+    - Service communication requires the fully qualified domain name (FQDN) of the service
+- Best practices around namespaces:
+    - Don't overuse them: just because we can create namespaces, doesn't mean we should. Consider whether there is a solid case for logically isolating the cluster resources.
+    - Combine namespaces with RBAC to improve security around resources deployed in each namespace.
+    - Limit the resources a namespace can use by implementing resource quotas to namespaces and resource requests and limits to their respective resources.
+    - Use meaningful dimensions to define the namespaces, and make sure they align with the overall team and environment setup of your projects.

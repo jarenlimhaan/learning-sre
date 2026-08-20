@@ -1,7 +1,7 @@
 ## Services
 - Services allow us to expose, through a stable IP or internal DNS name, a network application that is running as one or more Pods in your cluster.
 
-![alt text](../images/services.png)
+![Service routing traffic to Pods](../images/image.png)
 
 ## Types of service
 **Abstract pod details to facilitate connectivity**
