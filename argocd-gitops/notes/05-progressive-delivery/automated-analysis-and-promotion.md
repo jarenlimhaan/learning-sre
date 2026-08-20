@@ -3,7 +3,7 @@
 - Overview of the monitoring stack and service discovery.
 - Installing Prometheus via the community Helm chart in the `monitoring` namespace.
 
-![alt text](../images/prometheus.png)
+![alt text](../../images/prometheus.png)
 
 This diagram shows how Prometheus service discovery automatically targets your application to collect metrics during deployment.
 
@@ -27,7 +27,7 @@ This diagram shows how Prometheus service discovery automatically targets your a
 
 - Integrating metrics into the rollout process to enable automated decision-making.
 - Defining AnalysisTemplates and implementing self-healing.
-![alt text](../images/automated.png)
+![alt text](../../images/automated.png)
 ---
 
 ## 3. Analysis in Canary and Blue-Green Strategies

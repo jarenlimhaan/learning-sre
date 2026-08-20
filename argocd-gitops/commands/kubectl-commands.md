@@ -16,7 +16,7 @@ kubectl label secret private-repo-https -n argocd argocd.argoproj.io/secret-type
 kubectl port-forward service/argo-rollouts-dashboard 31000:3100 -n argo-rollouts
 kubectl argo rollouts dashboard 
 kubectl argo rollouts list rollouts
-kubectl get rollouts get rollout [rollout-name] --watch
+kubectl argo rollouts get rollout <rollout-name> --watch
 kubectl argo rollouts get rollout simple-color-app
 kubectl argo rollouts promote simple-color-app
 kubectl argo rollouts retry rollout simple-color-app

@@ -22,14 +22,14 @@
 
 1. Decoupling traffic distribution from replica counts for granular control.
 2. Exploring how Argo Rollouts dynamically manages HTTPRoute resources.
-![alt text](../images/traffic-weighted.png)
+![alt text](../../images/traffic-weighted.png)
 
 ## Header-based Routing
 
 1. Implementing deterministic routing for QA and testing purposes.
 2. Combining traffic weights with specific route matching rules.
-![header](../images/header.png)
-![alt text](../images/image.png)
+![header](../../images/header.png)
+![alt text](../../images/image.png)
 
 ### Canary traffic vs canary scale
 

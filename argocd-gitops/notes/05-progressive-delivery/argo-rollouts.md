@@ -21,9 +21,17 @@ Traditional Kubernetes Deployments have several drawbacks when being updated:
 
 Consider using advanced rollout controllers (e.g., Argo Rollouts) or service mesh traffic control for gradual, observable rollouts with automated analysis and safe rollback strategies.
 
-## The rollout crd
-- you can easily migrate from a deplotment to a rollout by simply changing the `apiVersion` and `kind` fields.
-- it expands onto the `Recreate` and `RollingUpdate` strategies by adding support to Canary and BlueGreen strategies. The Canary strategy is very flexible, and can be custimized to fit most project needs
+## The Rollout CRD
+
+A `Rollout` has a Pod template and selector similar to a `Deployment`, but adds canary and blue-green strategies, pauses, promotion, traffic routing, and analysis.
+
+Migration commonly starts by changing `apiVersion` from `apps/v1` to `argoproj.io/v1alpha1`, changing `kind` from `Deployment` to `Rollout`, and replacing the strategy. Before applying it, also verify that:
+
+- the Argo Rollouts controller and CRDs are installed;
+- the selector still matches the Pod-template labels;
+- Services select the intended Rollout Pods;
+- no Deployment and Rollout simultaneously own the same selector;
+- readiness probes and capacity settings are suitable for the chosen strategy.
 
 ## Canary rollout flow
 
