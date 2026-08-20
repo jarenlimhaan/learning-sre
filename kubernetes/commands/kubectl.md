@@ -38,3 +38,7 @@ kubectl scale deploy <deployment-name> --replicas=n
 
 # Describe pod
 kubectl describe pod <pod-name>
+
+# Check matching labels of pods
+kubectl get pods -l <label-name>
+kubectl get pods -l <key>=<val>
