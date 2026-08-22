@@ -1,8 +1,13 @@
-## Headless Services & StatefulSets
+## Headless Services and StatefulSets
 
-* **The Problem:** Standard Services act as random load balancers using a single IP. Databases can't use random load balancing because you must target specific nodes (e.g., Primary vs. Replica).
-* **The Solution (`clusterIP: None`):** Disables the load balancer and exposes the direct IP addresses of all underlying pods to CoreDNS.
-* **How They Tie Together:**
-* **StatefulSet** gives pods permanent **names** (`mysql-0`, `mysql-1`).
-* **Headless Service** registers those names in **DNS** (`mysql-0.mysql`, `mysql-1.mysql`).
-* **Result:** Replicas can talk directly to each other, and your app can route writes strictly to `mysql-0` and reads to `mysql-1`.
+A normal Service gives clients one virtual IP and distributes connections across ready endpoints. Some clustered applications instead need to discover or address individual members.
+
+A headless Service sets `clusterIP: None`. Kubernetes does not allocate a virtual IP or load-balance through kube-proxy; DNS returns records associated with the Service's endpoints.
+
+When paired with a StatefulSet:
+
+- the StatefulSet gives Pods stable names such as `mysql-0` and `mysql-1`;
+- `spec.serviceName` connects the StatefulSet's network identity to the headless Service;
+- Pods can receive stable DNS names such as `mysql-0.mysql.<namespace>.svc.cluster.local`.
+
+Headless discovery does not determine database roles. The database or another controller still decides which member is primary, replica, or eligible for reads and writes.

@@ -1,6 +1,6 @@
 ## Can't we get by with just Docker?
 
-* Docker and Docker Compose alone are enough for running individual containers or creating development environments, but they do meet the requirements of production workloads.
+* Docker and Docker Compose are useful for individual hosts and development environments, but they do not by themselves provide cluster-wide scheduling and reconciliation across many machines.
 
 | Challenge                | Docker                                                                                                                       | Kubernetes                                                                                                                               |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11,7 +11,7 @@
 | **Service Discovery**        |  No built-in solution for service discovery at scale                                                                           |  Internal DNS allows for robust service discovery mechanisms through Services     |
 | **Configuration Management** |  Requires low-level configuration and adjustments, and can become cumbersome for larger applications and multiple environments |  ConfigMaps and Secrets allow decoupling and scaling of application configuration |
 
-## What is kubernetess
+## What is Kubernetes?
 
 * **Open-source tool**, which has become the **de facto standard for container orchestration**.
 

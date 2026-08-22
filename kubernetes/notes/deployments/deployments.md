@@ -6,4 +6,6 @@
 * **Rollbacks**: roll back to a previous version in case something goes wrong during an update. This feature is crucial for maintaining application stability and quickly recovering from errors.
 * **Declarative updates** of replicas over time.
 * **History and revision control**: keep track of the history of all changes made, allowing you to view and revert to previous versions.
-* **Advanced rollouts**: limit risk by leveraging controlled rollouts of new versions, ensuring that updates are applied gradually and safely.
+* **Rollout controls**: `maxSurge` and `maxUnavailable` control how quickly Pods are replaced, while readiness probes prevent unready Pods from counting as available.
+
+A Deployment considers a rollout successful based on Kubernetes availability, not business metrics such as error rate or latency. Pauses, traffic-weighted canaries, and automated metric analysis require additional tooling such as Argo Rollouts or a service mesh.

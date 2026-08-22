@@ -1,10 +1,10 @@
 ## ReplicaSets
 
-* So far, we ran pods manually and individually. If a pod breaks or enters into an unhealthy state, we need to manually intervene.
-* ReplicaSets address the issue of replacing exited or unhealthy pods and making sure that a stable number of identical pods are running at any point in time.
-* Ensures high availability and fault tolerance by automatically replacing failed or terminated pods.
+* So far, we ran Pods manually and individually. If a Pod is deleted or its node fails, nothing recreates that standalone Pod.
+* ReplicaSets maintain a desired number of matching Pods. When too few exist, the controller creates replacements from the Pod template; when too many exist, it deletes excess Pods.
+* A ReplicaSet replaces deleted or terminal Pods. A liveness probe may cause the kubelet to restart an unhealthy container inside the same Pod; that is different from ReplicaSet reconciliation.
 * ReplicaSets work by identifying pods via `selectors`, and continuously checking whether the number of running pods matches the desired number of pods specified in the configuration.
-* ReplicaSets recreate pods automatically based on the template section in their spec.
+* In normal application management, create a Deployment rather than managing a ReplicaSet directly. The Deployment owns ReplicaSets and adds rollout history and rolling updates.
 
 ![ReplicaSet overview](../images/replica.png)
 ![ReplicaSet reconciliation process](../images/replica-process.png)

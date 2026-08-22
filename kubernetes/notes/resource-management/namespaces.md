@@ -11,7 +11,9 @@
 - Using namespaces:
     - We must inform in which namespace we wish to create our resources
     - We can set a current namespace for all kubectl commands, or pass it explicitly in each command
-    - Service communication requires the fully qualified domain name (FQDN) of the service
+    - A Service in the same namespace can be reached by its short name. From another namespace, use `<service>.<namespace>` or its full cluster DNS name.
+
+Namespaces provide naming, policy, quota, and RBAC boundaries, but they are not a complete security boundary by themselves. Use NetworkPolicies and workload security controls when traffic or runtime isolation is required.
 - Best practices around namespaces:
     - Don't overuse them: just because we can create namespaces, doesn't mean we should. Consider whether there is a solid case for logically isolating the cluster resources.
     - Combine namespaces with RBAC to improve security around resources deployed in each namespace.
