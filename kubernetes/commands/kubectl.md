@@ -49,4 +49,13 @@ kubectl get persistentvolume
 # Check persistent volume claim
 kubectl get pvc
 
+# Delete resource
 kubectl delete -f <yaml-file>
+
+# Access ConfigMaps
+kubectl get configmap
+
+# Learning example only: --from-literal values may be saved in shell history
+kubectl create secret generic db-creds \
+  --from-literal=username=db_user \
+  --from-literal=password=db_pass
