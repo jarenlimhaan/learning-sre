@@ -42,3 +42,11 @@ kubectl describe pod <pod-name>
 # Check matching labels of pods
 kubectl get pods -l <label-name>
 kubectl get pods -l <key>=<val>
+
+# Check persistent volume
+kubectl get persistentvolume
+
+# Check persistent volume claim
+kubectl get pvc
+
+kubectl delete -f <yaml-file>
