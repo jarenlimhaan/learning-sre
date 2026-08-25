@@ -1,0 +1,11 @@
+## RBAC
+- Role-Based Access Control (RBAC) is a security model in Kubernetes that defines and enforces permissions for users,
+- service accounts, and groups to interact with cluster resources.
+- Permissions can target many different resources (pods, deployments, secrets, configmaps, and many others) and operations (read, create, update, delete, as well as specific operations such as exec) in the cluster, allowing for very fine-grained access control.
+- RBAC is a must for any serious Kubernetes cluster.
+- Five key components of RBAC:
+    - Users, groups, and service accounts: the entities against which RBAC policies will be enforced
+    - Roles: defines a set of permissions within a specific namespace. It specifies the actions (verbs), such as get, list, create, that can be performed on particular Kubernetes resources (like pods, services, secrets).
+    - RoleBindings: assigns a Role to a user, group, or service account within a namespace.
+    - ClusterRoles: similar to Roles, but has effect across the entire cluster. They can be used to grant permissions to resources that are not namespaced, or to resources across all namespaces.
+    - ClusterRoleBindings: assigns a ClusterRole to a user, group, or service account.

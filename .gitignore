@@ -2,3 +2,6 @@
 argocd-gitops/kubectl-argo-rollouts.exe
 observability/app-versions/
 kubernetes/app-versions/
+*.key
+*.csr
+*.crt
