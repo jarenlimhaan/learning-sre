@@ -6,6 +6,7 @@ metadata:
   labels:
     name: nginx
 spec:
+  serviceAccountName: pod-inspector
   containers:
     - name: nginx
       image: nginx:1.27.0
@@ -15,6 +16,7 @@ spec:
           cpu: '500m'
       ports:
         - containerPort: 80
+---
 apiVersion: v1
 kind: Pod
 metadata:
